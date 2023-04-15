@@ -10,6 +10,7 @@ TagManager:
   - LowWaterObstacle
   - HighWaterObstacle
   - AirObstacle
+  - EnemyShip
   layers:
   - Default
   - TransparentFX

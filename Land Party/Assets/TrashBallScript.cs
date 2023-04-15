@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollingNoteInstance : MonoBehaviour
+public class TrashBallScript : MonoBehaviour
 {
     //[SerializeField]
     //private GameObject[] noteCircles;
@@ -18,20 +20,20 @@ public class ScrollingNoteInstance : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("EnemyShip") )
+        if (other.CompareTag("Player") )
             return;
         
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("EnemyShip"))
         {
-            other.gameObject.GetComponent<DDRPlayerController>().Kill();
+            other.GetComponent<EnemyShipScript>().OnDamage();
         }
-
+        
         Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = Vector2.down * speed;
+        rb.velocity = Vector2.up * speed;
     }
 }

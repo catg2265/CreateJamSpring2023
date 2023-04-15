@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,10 +9,11 @@ public class DDRPlayerController : MonoBehaviour
     public int pointCount;
     public MiniGameManager miniGameManager;
     [SerializeField] private float speed;
-    private float horizontalMovement;
-    
-    [SerializeField] private PlayerInput input;
+    [SerializeField] private Object cannonBallPrefab;
     [SerializeField] private float fireRate;
+    [SerializeField] private PlayerInput input;
+    
+    private float horizontalMovement;
     private bool _canFire = true;
     private Rigidbody2D rb;
 
@@ -37,13 +39,18 @@ public class DDRPlayerController : MonoBehaviour
     public void Shoot()
     {
         Debug.Log("Fire in the hole!");
+        var position = transform.position;
+        Object newTrashBall = Instantiate(cannonBallPrefab, transform, true);
+        newTrashBall.GameObject().transform.position = position;
+        newTrashBall.GameObject().GetComponent<TrashBallScript>().speed = 3f;
+        
         _canFire = false;
         StartCoroutine(ReloadRoutine());
     }
 
     public void Kill()
     {
-        
+       // This code is run when the player is hit by a player head (and dies). 
     }
 
     IEnumerator ReloadRoutine()

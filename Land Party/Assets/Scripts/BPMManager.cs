@@ -39,7 +39,7 @@ public class BPMManager : MonoBehaviour
         SpawnEnemyEvent ??= new UnityEvent<GameObject, int>();
 
         //Start the timer.
-        StartCoroutine(GlobalTimer(GetBPM()));
+        // StartCoroutine(GlobalTimer(GetBPM()));
         StartCoroutine(GlobalEnemySpawnTimer());
     }
 
@@ -48,7 +48,7 @@ public class BPMManager : MonoBehaviour
     {
         float startTime = Time.time;
         float nextTick = 0f;
-        float interval = 2 / 3f;
+        float interval = 1 / 8f;
         
         while (true)
         {
