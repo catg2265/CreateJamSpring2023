@@ -36,7 +36,16 @@
                     "name": "DDR",
                     "type": "Value",
                     "id": "e4c441b9-19a8-447c-abba-f611542449cb",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PokeThePlank",
+                    "type": "Value",
+                    "id": "bd91626f-7c93-492e-bce7-4ee0900a987f",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -304,6 +313,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "DDR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5cef035-9e6e-4b76-a47b-b080801607c9",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PokeThePlank",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd30b7ca-1f7b-491d-b2f4-dd8b65bfaeff",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PokeThePlank",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ff98d2d-881a-4e40-a714-5f608632a763",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PokeThePlank",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
