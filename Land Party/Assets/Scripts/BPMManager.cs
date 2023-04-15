@@ -11,7 +11,7 @@ public class BPMManager : MonoBehaviour
 
     //Instance of class.
     public static BPMManager instance;
-    public UnityEvent<GameObject> beatTimerEvent;
+    public static UnityEvent<GameObject> BeatTimerEvent;
 
     //Unity dislikes getters, so I made my own.
     public float GetBPM()
@@ -33,7 +33,7 @@ public class BPMManager : MonoBehaviour
         }
 
         //Register global time event.
-        beatTimerEvent ??= new UnityEvent<GameObject>();
+        BeatTimerEvent ??= new UnityEvent<GameObject>();
 
         //Start the timer.
         StartCoroutine(GlobalTimer(GetBPM()));
@@ -51,10 +51,10 @@ public class BPMManager : MonoBehaviour
 
         while (true)
         {
-            if ((Time.time - startTime) + (inputBPM) > nextTick)
+            if (Time.time - startTime + inputBPM > nextTick)
             {
                 nextTick += inputBPM;
-                beatTimerEvent.Invoke(gameObject);
+                BeatTimerEvent.Invoke(gameObject);
             }
 
             yield return new WaitForEndOfFrame();
