@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3819098548915875859}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: AirObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: 2842305387418926091}
+  timer: 0
 --- !u!50 &2842305387418926091
 Rigidbody2D:
   serializedVersion: 4
