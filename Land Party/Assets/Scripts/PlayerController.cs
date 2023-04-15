@@ -37,6 +37,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + new Vector2(horizontal, rb.velocity.y) * (speed*Time.fixedDeltaTime));
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y); 
     }
 }
