@@ -57,6 +57,12 @@ public class PlayerController : MonoBehaviour
         {
             _spriteRenderer.flipX = true;
         }
+
+        if (input.actions["Jump"].IsPressed() && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        }
+        
     }
 
     private void FixedUpdate()

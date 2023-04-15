@@ -42,13 +42,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PokeThePlank",
-                    "type": "Value",
-                    "id": "bd91626f-7c93-492e-bce7-4ee0900a987f",
-                    "expectedControlType": "Integer",
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "42682742-2fd4-4275-b776-34d975030ade",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -289,7 +289,7 @@
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "DDR",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -300,7 +300,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "DDR",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -311,7 +311,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "DDR",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -322,41 +322,19 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "DDR",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "b5cef035-9e6e-4b76-a47b-b080801607c9",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "39928a12-dc27-4a1f-ae63-192dcada44ae",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PokeThePlank",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd30b7ca-1f7b-491d-b2f4-dd8b65bfaeff",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PokeThePlank",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4ff98d2d-881a-4e40-a714-5f608632a763",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "PokeThePlank",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
