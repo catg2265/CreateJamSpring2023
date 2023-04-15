@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,15 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
 
     public bool activateSpriteSelec = false;
+
+
+    public LayerMask LayerMask;
+
+    private bool touchGround = false;
+    
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
