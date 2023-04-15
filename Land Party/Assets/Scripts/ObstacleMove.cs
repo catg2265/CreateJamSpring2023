@@ -6,7 +6,10 @@ using UnityEngine;
 public class ObstacleMove : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    
+
+    [SerializeField] private Rigidbody2D rb;
+
+    public float timer = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +17,10 @@ public class ObstacleMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        rb.velocity = Vector2.left * speed;
+        timer += Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -26,7 +30,7 @@ public class ObstacleMove : MonoBehaviour
             Destroy(col.gameObject);
         }
 
-        if (col.CompareTag("Wall"))
+        if (col.CompareTag("Wall") && timer > 1f)
         {
             Destroy(gameObject);
         }
