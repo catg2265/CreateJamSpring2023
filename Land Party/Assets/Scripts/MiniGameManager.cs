@@ -21,21 +21,14 @@ public class MiniGameManager : MonoBehaviour
     private int _songBeatIndex;
     private int _currBeat;
 
-    
     // Start is called before the first frame update
     void Start()
     {
         BPMManager.instance.beatTimerEvent.AddListener(NewBeat);
     }
 
-
     private void NewBeat(GameObject o)
     {
         _currBeat += 1;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

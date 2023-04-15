@@ -36,7 +36,7 @@
                     "name": "DDR",
                     "type": "Value",
                     "id": "e4c441b9-19a8-447c-abba-f611542449cb",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -273,48 +273,59 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "20d552e2-8189-4b20-a1c8-2ed9b170cfbb",
+                    "name": "FaceButtons",
+                    "id": "a27dc6e1-2d54-4440-beed-114e0fa46d4a",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DDR",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "05f12348-2182-4b87-bd9d-050faec8a436",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "DDR",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "b5de00d3-ca2a-41a7-9e26-0ef5d63b7e2a",
+                    "name": "down",
+                    "id": "fe936100-dad3-403e-b8a3-75f542d070ae",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "DDR",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "5c42847a-152c-47df-a98e-ee2fe5431875",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "DDR",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a4cab814-ff27-4bc3-9af1-1daa4ab8777b",
+                    "name": "left",
+                    "id": "2ed17322-0d73-4558-8c3c-ce9dbb74086d",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "",
                     "action": "DDR",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "956d3c63-7f15-4738-a781-9bd414acd272",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DDR",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

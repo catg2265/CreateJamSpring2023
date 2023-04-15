@@ -9,12 +9,16 @@ public class DDRPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(input.actions["DDR"].ReadValue<int>());
+        if (input.actions["DDR"].WasPressedThisFrame())
+        {
+            Debug.Log(input.actions["DDR"].ReadValue<Vector2>());
+        }
+        
     }
 }
