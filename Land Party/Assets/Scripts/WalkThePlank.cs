@@ -11,6 +11,8 @@ public class WalkThePlank : MonoBehaviour
     public float maxTime = 5f;
     private int _plankWalkerPostion;
     private bool plankWalkerDead;
+
+    [SerializeField] private Transform plankWalker;
     private float timer;
     private float currentTime;
     private bool isTimerRunning = false;
@@ -25,6 +27,7 @@ public class WalkThePlank : MonoBehaviour
     {
         plankWalkerDead = false;
         _stopwatch = new Stopwatch();
+        playerPoint = 0;
     }
 
     // Update is called once per frame
@@ -53,23 +56,27 @@ public class WalkThePlank : MonoBehaviour
                 isTimerRunning = false;
             }
 
-            if (_plankWalkerPostion == 0 && _playerInput.actions["PokeThePlank"].WasPressedThisFrame())
+            if (_plankWalkerPostion == 0 && _playerInput.actions["DDR"].ReadValue<Vector2>().x != 0)
             {
                 playerPoint++;
                 _stopwatch.Start();
                 plankWalkerDead = true;
             }
-            else if (_plankWalkerPostion == 1 && _playerInput.actions["PokeThePlank"].WasPressedThisFrame())
+            else if (_plankWalkerPostion == 1 && _playerInput.actions["DDR"].ReadValue<Vector2>().y > 0)
             {
                 playerPoint++;
                 _stopwatch.Start();
                 plankWalkerDead = true;
             }
-            else if (_plankWalkerPostion == 2 && _playerInput.actions["PokeThePlank"].WasPressedThisFrame())
+            else if (_plankWalkerPostion == 2 && _playerInput.actions["DDR"].ReadValue<Vector2>().y < 0)
             {
                 playerPoint++;
-                _stopwatch.Restart();
+                _stopwatch.Start();
                 plankWalkerDead = true;
+            }
+            else
+            {
+                
             }
         }
     }
