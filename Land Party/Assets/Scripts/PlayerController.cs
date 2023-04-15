@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private List<Sprite> _playersprites = new List<Sprite>();
 
+    public int playerID = 0;
+
     [SerializeField] private float speed = 5f;
 
     private float horizontal;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             GameObject[] goArr = GameObject.FindGameObjectsWithTag("Player");
             _spriteRenderer.sprite = _playersprites[goArr.Length];
+            playerID = goArr.Length;
         }
     }
 

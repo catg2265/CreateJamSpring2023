@@ -34,12 +34,12 @@
                 },
                 {
                     "name": "DDR",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e4c441b9-19a8-447c-abba-f611542449cb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
