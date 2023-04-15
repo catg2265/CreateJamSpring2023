@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,61 +6,49 @@ public class DDRPlayerController : MonoBehaviour
 {
     public int playerNumber;
     public int pointCount;
-    public GameObject[] inputSpheres;
     public MiniGameManager miniGameManager;
-
-    private bool _hasPressedThisBeat;
+    [SerializeField] private float speed;
+    private float horizontalMovement;
+    
     [SerializeField] private PlayerInput input;
+    [SerializeField] private float fireRate;
+    private bool _canFire = true;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
 
     void Start()
     {
-        Debug.Log(BPMManager.instance.GetBPM());
-        BPMManager.BeatTimerEvent.AddListener(OnBeatUpdate);
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    void OnBeatUpdate(GameObject o)
-    {
-        _hasPressedThisBeat = false;
-    }
-    
     void Update()
     {
-        if (!input.actions["DDR"].WasPressedThisFrame())
-            return;
-        
         Vector2 curr = input.actions["DDR"].ReadValue<Vector2>();
-        if (_hasPressedThisBeat || curr is { x: 0f, y: 0 })
-            return;
-        _hasPressedThisBeat = true;
-
-        switch (curr)
+        if (curr is { x: 1, y: 0 } && _canFire)
         {
-            case {x:1,y:0}:
-                miniGameManager.HitBeat(this,BeatInput.LEFT);
-                return;
-            case {x:-1,y:0}:
-                miniGameManager.HitBeat(this,BeatInput.RIGHT);
-                return;
-            case {x:0,y:1}:
-                miniGameManager.HitBeat(this,BeatInput.UP);
-                return;
-            case {x:0,y:-1}:
-                miniGameManager.HitBeat(this,BeatInput.DOWN);
-                return;
+            Shoot();
         }
+        
+        horizontalMovement = input.actions["Move"].ReadValue<Vector2>().x;
+        rb.velocity = new Vector2(horizontalMovement * speed, 0);
+    }
 
-        bool pressedRight = curr.x > 0;
-        bool pressedUp = curr.y > 0;
+    public void Shoot()
+    {
+        Debug.Log("Fire in the hole!");
+        _canFire = false;
+        StartCoroutine(ReloadRoutine());
+    }
 
-        if (pressedRight && pressedUp)
-            miniGameManager.HitBeat(this, BeatInput.UPRIGHT);
-        else if (pressedUp)
-            miniGameManager.HitBeat(this, BeatInput.UPLEFT);
-        else if (pressedRight)
-            miniGameManager.HitBeat(this, BeatInput.DOWNRIGHT);
-        else
-            miniGameManager.HitBeat(this, BeatInput.DOWNLEFT);
+    public void Kill()
+    {
+        
+    }
+
+    IEnumerator ReloadRoutine()
+    {
+        yield return new WaitForSeconds(fireRate);
+        _canFire = true;
     }
 }

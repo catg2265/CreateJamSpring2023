@@ -7,11 +7,13 @@ public class BPMManager : MonoBehaviour
 //constants / magic numbers
     [SerializeField]
     float BPM = 192;
-    const float SecondsInMinute = 60;
+
+    private const float SecondsInMinute = 60;
 
     //Instance of class.
     public static BPMManager instance;
     public static UnityEvent<GameObject> BeatTimerEvent;
+    public static UnityEvent<GameObject, int> SpawnEnemyEvent;
 
     //Unity dislikes getters, so I made my own.
     public float GetBPM()
@@ -34,9 +36,29 @@ public class BPMManager : MonoBehaviour
 
         //Register global time event.
         BeatTimerEvent ??= new UnityEvent<GameObject>();
+        SpawnEnemyEvent ??= new UnityEvent<GameObject, int>();
 
         //Start the timer.
         StartCoroutine(GlobalTimer(GetBPM()));
+        StartCoroutine(GlobalEnemySpawnTimer());
+    }
+
+
+    IEnumerator GlobalEnemySpawnTimer()
+    {
+        float startTime = Time.time;
+        float nextTick = 0f;
+        float interval = 2 / 3f;
+        
+        while (true)
+        {
+            if (Time.time - startTime + interval > nextTick)
+            {
+                nextTick += interval;
+                SpawnEnemyEvent.Invoke(gameObject, 1);
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     /// <summary>
