@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 746221754639447030}
   m_Layer: 0
   m_Name: ScrollingNotes
-  m_TagString: Note
+  m_TagString: BadProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,12 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9109d26d2edf28c4cb405d0e87c2dd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteCircles:
-  - {fileID: 3451776020533380012}
-  - {fileID: 3451776021005027803}
-  - {fileID: 3451776020530426255}
-  - {fileID: 3451776021452742567}
-  targetPosition: {x: 0, y: 0, z: 0}
+  speed: 0
 --- !u!68 &746221754639447030
 EdgeCollider2D:
   m_ObjectHideFlags: 0

@@ -11,13 +11,17 @@ using Random = UnityEngine.Random;
 public class NoteSpawner : MonoBehaviour
 {
     public List<Object> noteObjects = new();
-    public List<Vector3> spawnPoints = new();
+    public List<Transform> spawnPointsTRansforms = new();
     public Object NotePrefab;
     public float projectileSpeed;
-    
+    private List<Vector3> spawnPoints = new();
     private void Start()
     {
         BPMManager.SpawnEnemyEvent.AddListener(SpawnEnemies);
+        foreach (var VARIABLE in spawnPointsTRansforms)
+        {
+            spawnPoints.Add(VARIABLE.position);
+        }
     }
 
     void SpawnEnemies(GameObject o, int count)

@@ -20,15 +20,16 @@ public class TrashBallScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") )
-            return;
-        
         if (other.CompareTag("EnemyShip"))
         {
             other.GetComponent<EnemyShipScript>().OnDamage();
         }
-        
-        Destroy(gameObject);
+
+        if (other.CompareTag("BadProjectile"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

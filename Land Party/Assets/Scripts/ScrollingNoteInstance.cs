@@ -18,15 +18,16 @@ public class ScrollingNoteInstance : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("EnemyShip") )
-            return;
-        
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<DDRPlayerController>().Kill();
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

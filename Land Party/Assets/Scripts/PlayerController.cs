@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private float JumpTime;
     [SerializeField] private float StartJumpTime;
     private bool isJumping = false;
+
+    private float score = 0f;
     
     
     // Start is called before the first frame update
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             _spriteRenderer.sprite = _playersprites[playerID];
         }
-        print(playerID.ToString());
+        
         gameObject.transform.position = gm.playerSpawnPoint[playerID];
         
         /*if (playerID == 1)
@@ -73,7 +75,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //horizontal = input.actions["Move"].ReadValue<Vector2>().x;
+        score += Mathf.Lerp(0, 10, Time.deltaTime);
+        
         if (horizontal > 0)
         {
             _spriteRenderer.flipX = false;
@@ -88,6 +91,7 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             JumpTime = StartJumpTime;
             rb.velocity = Vector2.up * jumpPower;
+            print( "My Player ID is: " + playerID.ToString());
         }
         if (input.actions["Jump"].IsPressed() && isJumping)
         {
@@ -95,6 +99,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpPower;
                 JumpTime -= Time.deltaTime;
+                print( "My Player ID is: " + playerID.ToString());
             }
             else
             {
