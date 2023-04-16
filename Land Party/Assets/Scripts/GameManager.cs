@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,11 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
        DontDestroyOnLoad(gameObject);
+       foreach (InputDevice inputDevice in InputSystem.devices
+                    .Where(x => x is Gamepad))
+       {
+           InputSystem.EnableDevice(inputDevice);
+       }
        playersPartialScore.Add(0f);
        playersPartialScore.Add(0f);
        playersPartialScore.Add(0f);

@@ -29,6 +29,8 @@ public class DDRPlayerController : MonoBehaviour
         gm = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         GameObject[] goArr = GameObject.FindGameObjectsWithTag("Player");
         playerID = goArr.Length-1;
+        
+        input.ActivateInput();
     }
 
     void Update()
@@ -39,7 +41,8 @@ public class DDRPlayerController : MonoBehaviour
         {
             Shoot();
         }
-        
+
+        Debug.Log(input.GetDevice<InputDevice>().deviceId.ToString());
         horizontalMovement = input.actions["Move"].ReadValue<Vector2>().x;
         rb.velocity = new Vector2(horizontalMovement * speed, 0);
     }

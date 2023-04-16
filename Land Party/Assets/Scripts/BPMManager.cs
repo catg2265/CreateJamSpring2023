@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class BPMManager : MonoBehaviour
 {
@@ -23,7 +25,7 @@ public class BPMManager : MonoBehaviour
 
     
     void Awake()
-    {
+    {   
         //Instance trick, allow only one instance.
         if (instance == null)
         {

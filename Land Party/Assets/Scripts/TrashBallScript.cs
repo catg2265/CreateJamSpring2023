@@ -23,6 +23,7 @@ public class TrashBallScript : MonoBehaviour
         if (other.CompareTag("EnemyShip"))
         {
             other.GetComponent<EnemyShipScript>().OnDamage();
+            Destroy(gameObject);
         }
 
         if (other.CompareTag("BadProjectile"))

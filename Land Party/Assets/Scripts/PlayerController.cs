@@ -119,6 +119,13 @@ public class PlayerController : MonoBehaviour
         horizontal = Mathf.RoundToInt(movementVector.x);
     }
     
+    public void Kill()
+    {
+        // This code is run when the player is hit by a player head (and dies). 
+        gm.totalPeople--;
+        gm.playersPartialScore[playerID] = score;
+        enabled = false;
+    }
 
     private void FixedUpdate()
     {

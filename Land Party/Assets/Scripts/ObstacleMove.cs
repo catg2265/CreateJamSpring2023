@@ -28,7 +28,7 @@ public class ObstacleMove : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            SceneManager.LoadScene(1);
+            col.GetComponent<PlayerController>().Kill();
         }
 
         if (col.CompareTag("Wall") && timer > 1f)
