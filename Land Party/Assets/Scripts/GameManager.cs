@@ -41,7 +41,11 @@ public class GameManager : MonoBehaviour
        victorytext = GameObject.Find("Canvas").GetComponent<TextMeshProUGUI>();
       // if(SceneManager.GetActiveScene().buildIndex >= 2)
         //   _playerInputManager.DisableJoining();
-       if (SceneManager.GetActiveScene().buildIndex >= 3)
+       if (SceneManager.GetActiveScene().buildIndex >= 0)
+           _playerInputManager.playerPrefab = _playerPrefabs[0];
+       if (SceneManager.GetActiveScene().buildIndex >= 1)
+           _playerInputManager.playerPrefab = _playerPrefabs[1];
+       if (SceneManager.GetActiveScene().buildIndex >= 2)
            _playerInputManager.playerPrefab = _playerPrefabs[2];
        totalPeople = _playerInputManager.playerCount;
     }
