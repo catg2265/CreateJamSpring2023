@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
        DontDestroyOnLoad(gameObject);
+       victorytext.enabled = false;
        foreach (InputDevice inputDevice in InputSystem.devices
                     .Where(x => x is Gamepad))
        {
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
                     currLargestIndex = i;
             }
             //Do something for the winner
+            victorytext.enabled = true;
             victorytext.text = "Congratulations Player " + currLargestIndex +
                                " You won this minigame. The next one starts soon!";
             StartCoroutine(StartNextScene());
