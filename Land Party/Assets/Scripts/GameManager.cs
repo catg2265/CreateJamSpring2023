@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private List<Vector3> playerSpawnPoint = new();
+    public List<Vector3> playerSpawnPoint = new();
+
+    [SerializeField] private List<GameObject> _playerPrefabs = new();
 
     [SerializeField] private PlayerInputManager _playerInputManager;
     // Start is called before the first frame update
@@ -15,6 +17,8 @@ public class GameManager : MonoBehaviour
        DontDestroyOnLoad(gameObject);
        if(SceneManager.GetActiveScene().buildIndex >= 2)
            _playerInputManager.DisableJoining();
+       if (SceneManager.GetActiveScene().buildIndex >= 3)
+           _playerInputManager.playerPrefab = _playerPrefabs[3];
     }
 
     // Update is called once per frame

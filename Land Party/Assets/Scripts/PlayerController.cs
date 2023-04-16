@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameManager gm;
+    
     [SerializeField] private PlayerInput input;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -32,12 +34,14 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GameObject[] goArr = GameObject.FindGameObjectsWithTag("Player");
+        playerID = goArr.Length;
         if (activateSpriteSelec)
         {
-            GameObject[] goArr = GameObject.FindGameObjectsWithTag("Player");
-            _spriteRenderer.sprite = _playersprites[goArr.Length];
-            playerID = goArr.Length;
+            _spriteRenderer.sprite = _playersprites[playerID];
         }
+
+        gameObject.transform.position = gm.playerSpawnPoint[playerID];
     }
 
     // Update is called once per frame
