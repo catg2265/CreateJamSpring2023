@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public List<Vector3> playerSpawnPoint = new();
+
+    private TextMeshProUGUI victorytext;
 
     [SerializeField] private List<GameObject> _playerPrefabs = new();
 
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
        playersPartialScore.Add(0f);
        playersPartialScore.Add(0f);
        playersPartialScore.Add(0f);
+       victorytext = GameObject.Find("Canvas").GetComponent<TextMeshProUGUI>();
       // if(SceneManager.GetActiveScene().buildIndex >= 2)
         //   _playerInputManager.DisableJoining();
        if (SceneManager.GetActiveScene().buildIndex >= 3)
@@ -50,11 +54,19 @@ public class GameManager : MonoBehaviour
                     currLargestIndex = i;
             }
             //Do something for the winner
-
+            victorytext.text = "Congratulations Player " + currLargestIndex +
+                               " You won this minigame. The next one starts soon!";
+            StartCoroutine(StartNextScene());
             for (int i = 0; i < numOfPlayers; i++)
             {
                 playersPartialScore[i] = 0f;
             }
         }
+    }
+
+    IEnumerator StartNextScene()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
