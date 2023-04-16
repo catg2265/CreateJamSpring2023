@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameManager gm;
+    private GameManager gm;
     
     [SerializeField] private PlayerInput input;
     [SerializeField] private Rigidbody2D rb;
@@ -32,22 +34,46 @@ public class PlayerController : MonoBehaviour
     
     
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        gm = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         GameObject[] goArr = GameObject.FindGameObjectsWithTag("Player");
-        playerID = goArr.Length;
+        playerID = goArr.Length-1;
         if (activateSpriteSelec)
         {
             _spriteRenderer.sprite = _playersprites[playerID];
         }
-
+        print(playerID.ToString());
         gameObject.transform.position = gm.playerSpawnPoint[playerID];
+        
+        /*if (playerID == 1)
+        {
+            input.SwitchCurrentActionMap("Player");
+            input.SwitchCurrentControlScheme();
+        }
+        else if (playerID == 2)
+        {
+            input.SwitchCurrentActionMap("Player1");
+            input.SwitchCurrentControlScheme();
+        }
+        else if (playerID == 3)
+        {
+            input.SwitchCurrentActionMap("Player2");
+            input.SwitchCurrentControlScheme();
+            
+        }
+        else if (playerID == 4)
+        {
+            input.SwitchCurrentActionMap("Player3");
+            input.SwitchCurrentControlScheme();
+        }
+*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = input.actions["Move"].ReadValue<Vector2>().x;
+        //horizontal = input.actions["Move"].ReadValue<Vector2>().x;
         if (horizontal > 0)
         {
             _spriteRenderer.flipX = false;
@@ -81,6 +107,13 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void OnMove(InputValue VALUE)
+    {
+        Vector2 movementVector = VALUE.Get<Vector2>();
+        horizontal = Mathf.RoundToInt(movementVector.x);
+    }
+    
 
     private void FixedUpdate()
     {

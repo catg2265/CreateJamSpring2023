@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 
 public class SpawnpointController : MonoBehaviour
 {
-    [SerializeField] private List<Vector3> spawnPointList = new List<Vector3>();
+    private List<Vector3> spawnPointList = new List<Vector3>();
+
+    [SerializeField] private List<Transform> spawnpoints = new();
 
     [SerializeField] private List<GameObject> prefabAirList = new List<GameObject>();
 
@@ -23,6 +25,10 @@ public class SpawnpointController : MonoBehaviour
     void Start()
     {
         startTimer = StandardStartTime;
+        foreach (var VARIABLE in spawnpoints)
+        {
+            spawnPointList.Add(VARIABLE.position);
+        }
     }
 
     // Update is called once per frame

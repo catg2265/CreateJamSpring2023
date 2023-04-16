@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
        DontDestroyOnLoad(gameObject);
-       if(SceneManager.GetActiveScene().buildIndex >= 2)
-           _playerInputManager.DisableJoining();
+      // if(SceneManager.GetActiveScene().buildIndex >= 2)
+        //   _playerInputManager.DisableJoining();
        if (SceneManager.GetActiveScene().buildIndex >= 3)
-           _playerInputManager.playerPrefab = _playerPrefabs[3];
+           _playerInputManager.playerPrefab = _playerPrefabs[2];
     }
 
     // Update is called once per frame
